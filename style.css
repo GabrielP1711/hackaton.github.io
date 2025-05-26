@@ -1,0 +1,16 @@
+/* Estilos personalizados */
+body {
+    font-family: sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.card-header h5 {
+    margin-bottom: 0;
+}
+
+#alertas .alert {
+    margin-bottom: 0.5rem;
+}
