@@ -6,7 +6,7 @@ class DataBase
     private $host = 'localhost';
     private $username = 'root';
     private $password = '';
-    private $database = 'gestiondecitas';
+    private $database = 'hackaton';
 
     // Constructor privado para prevenir múltiples instancias
     private function __construct()
