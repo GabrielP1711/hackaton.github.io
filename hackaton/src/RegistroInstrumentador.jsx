@@ -4,6 +4,7 @@ import "./Estilos/Login.css"; // Importar los estilos existentes
 function RegistroInstrumentador() {
   const [id, setId] = useState("");
   const [nombre, setNombre] = useState("");
+  const [password, setPassword] = useState("");
   const [foto, setFoto] = useState(null);
 
   const handleSubmit = (e) => {
@@ -13,23 +14,30 @@ function RegistroInstrumentador() {
     const formData = new FormData();
     formData.append("id", id);
     formData.append("nombre", nombre);
-    formData.append("foto", foto);
+    formData.append("password", password);
+    formData.append("imagen", foto);
 
-    // Enviar los datos al servidor (puedes ajustar la URL según tu API)
-    fetch("http://localhost/hackaton.github.io/hackaton/src/registrar_procedimiento.phphttp://localhost/hackaton.github.io/hackaton/src/registrar.php", {
+    // Enviar los datos al servidor (corregida la URL)
+    fetch("http://localhost/hackaton.github.io/hackaton/src/registrar.php", {
       method: "POST",
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
-        alert("Instrumentador registrado con éxito");
-        // Reiniciar los campos del formulario
-        setId("");
-        setNombre("");
-        setFoto(null);
+        if (data.status === "success") {
+          alert("Instrumentador registrado con éxito");
+          // Reiniciar los campos del formulario
+          setId("");
+          setNombre("");
+          setPassword("");
+          setFoto(null);
+        } else {
+          alert("Error: " + data.message);
+        }
       })
       .catch((error) => {
         console.error("Error al registrar el instrumentador:", error);
+        alert("Error de conexión con el servidor");
       });
   };
 
@@ -59,6 +67,19 @@ function RegistroInstrumentador() {
             className="form-control"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
+            required
+          />
+        </div>
+
+        {/* Campo Contraseña */}
+        <div className="form-group">
+          <label htmlFor="password">Contraseña:</label>
+          <input
+            type="password"
+            id="password"
+            className="form-control"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>

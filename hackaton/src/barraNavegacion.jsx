@@ -28,6 +28,9 @@ function BarraNavegacion() {
               <li>
                 <Link to="/registro">Registrar</Link>
               </li>
+              <li>
+                <Link to="/instrumentos">Registrar Instrumentos</Link> 
+              </li>
             </ul>
           </nav>
         </div>

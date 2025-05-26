@@ -8,6 +8,7 @@ import HomePage from "./HomePage";
 import FormularioProcedimiento from './FormularioProcedimiento';
 import FormularioSolicitud from "./FormularioSolicitud";
 import RegistroInstrumentador from "./RegistroInstrumentador";
+import RegistroBandeja from "./RegistroBandeja";
 
 
 createRoot(document.getElementById("root")).render(
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/nuevo-procedimiento" element={<FormularioProcedimiento />} />
           <Route path="/nueva-solicitud" element={<FormularioSolicitud />} />
           <Route path="/registro" element={<RegistroInstrumentador />} />
+          <Route path="/instrumentos" element={<RegistroBandeja />} />
 
         {/*  <Route path="/login" element={<Login />} />*/}
         {/*  <Route path="/formSolicitud" element={<Abogados />} />*/}
