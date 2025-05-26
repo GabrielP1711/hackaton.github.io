@@ -9,21 +9,34 @@ const HomePage = () => {
   const [menuAbierto, setMenuAbierto] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const responseUsuario = await fetch('/api/usuario-actual');
-        const dataUsuario = await responseUsuario.json();
-        setUsuario(dataUsuario);
-
-        const responseProcedimientos = await fetch('/api/procedimientos-activos');
-        const dataProcedimientos = await responseProcedimientos.json();
-        setProcedimientos(dataProcedimientos);
-      } catch (error) {
-        console.error('Error al cargar datos:', error);
-      }
+    // Datos mockeados temporalmente
+    const mockUsuario = {
+      id: 1,
+      nombre: 'Usuario Prueba',
+      rol: 'instrumentador'
     };
 
-    fetchData();
+    const mockProcedimientos = [
+      {
+        id: 1,
+        nombre: 'Cirugía General',
+        fecha: new Date().toISOString(),
+        descripcion: 'Procedimiento quirúrgico general programado'
+      },
+      {
+        id: 2,
+        nombre: 'Procedimiento Ortopédico',
+        fecha: new Date().toISOString(),
+        descripcion: 'Cirugía ortopédica de emergencia'
+      }
+    ];
+
+    // Simular llamada a API
+    setTimeout(() => {
+      setUsuario(mockUsuario);
+      setProcedimientos(mockProcedimientos);
+    }, 500);
+
   }, []);
 
   return (

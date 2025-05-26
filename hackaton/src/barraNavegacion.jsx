@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Estilos/styles.css";
 
 function BarraNavegacion() {
@@ -9,14 +10,20 @@ function BarraNavegacion() {
           <div className="logo">Gestion quirurgica</div>
           <nav className="desktop-nav">
             <ul>
-              <li>
-                <span className="navbar-link">Solicitud</span>
+              <li>    
+                <Link to="/">Inicio</Link>
+              </li>
+              <li>    
+                <Link to="/#">Solicitud</Link>
+              </li>
+              <li> 
+                <Link to="/#">Devolución</Link>
               </li>
               <li>
-                <span className="navbar-link">Devolución</span>
+                 <Link to="/#">Central</Link>
               </li>
               <li>
-                <span className="navbar-link">Central</span>
+                 <Link to="/login">Iniciar sesion</Link>
               </li>
             </ul>
           </nav>
