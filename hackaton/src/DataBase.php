@@ -1,4 +1,5 @@
 <?php
+
 class DataBase
 {
     private static $instance = null;

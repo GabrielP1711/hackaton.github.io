@@ -7,21 +7,44 @@ const FormularioProcedimiento = () => {
   const [formData, setFormData] = useState({
     nombre: '',
     descripcion: '',
-    cedulaPaciente: '',
-    fecha: '',
+    id_paciente: '',
+    fecha: ''
   });
-
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
+  
+
     try {
-      // Aquí irá la lógica para enviar los datos al backend
-      console.log('Datos del formulario:', formData);
-      // Redirigir al usuario después de un registro exitoso
-      navigate('/');
+      const response = await fetch('http://localhost/hackaton.github.io/hackaton/src/registrar_procedimiento.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error del servidor: ${response.status} ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      
+      if (data.status === 'success') {
+        alert('Procedimiento registrado exitosamente');
+        navigate('/');
+      } else {
+        setError(data.message || 'Error al registrar el procedimiento');
+      }
     } catch (err) {
-      setError('Error al registrar el procedimiento');
+      setError('Error de conexión con el servidor o datos inválidos');
+      console.error('Error:', err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,6 +73,7 @@ const FormularioProcedimiento = () => {
               onChange={handleChange}
               required
               className="form-control"
+              disabled={loading}
             />
           </div>
 
@@ -63,20 +87,21 @@ const FormularioProcedimiento = () => {
               required
               className="form-control"
               rows="4"
+              disabled={loading}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="cedulaPaciente">Cédula del Paciente:</label>
+            <label htmlFor="id_paciente">ID del Paciente:</label>
             <input
-              type="text"
-              id="cedulaPaciente"
-              name="cedulaPaciente"
-              value={formData.cedulaPaciente}
+              type="number"
+              id="id_paciente"
+              name="id_paciente"
+              value={formData.id_paciente}
               onChange={handleChange}
               required
               className="form-control"
-              pattern="[0-9]*"
+              disabled={loading}
             />
           </div>
 
@@ -88,19 +113,24 @@ const FormularioProcedimiento = () => {
               name="fecha"
               value={formData.fecha}
               onChange={handleChange}
-              required
               className="form-control"
+              disabled={loading}
             />
           </div>
 
           <div className="form-actions">
-            <button type="submit" className="btn btn-primary">
-              Registrar Procedimiento
+            <button 
+              type="submit" 
+              className="btn btn-primary"
+              disabled={loading}
+            >
+              {loading ? 'Registrando...' : 'Registrar Procedimiento'}
             </button>
             <button 
               type="button" 
               className="btn btn-secondary"
               onClick={() => navigate('/')}
+              disabled={loading}
             >
               Cancelar
             </button>
