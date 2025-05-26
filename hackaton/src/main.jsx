@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./Login";
 import BarraNavegacion from "./barraNavegacion";
 import HomePage from "./HomePage";
+import FormularioProcedimiento from './FormularioProcedimiento';
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById("root")).render(
       <Routes>
          <Route path="/" element={<HomePage />} />  
           <Route path="/login" element={<Login />} />
+          <Route path="/nuevo-procedimiento" element={<FormularioProcedimiento />} />
         {/*  <Route path="/login" element={<Login />} />*/}
         {/*  <Route path="/formSolicitud" element={<Abogados />} />*/}
         {/* <Route path="/form" element={<Clientes />} />*/}
