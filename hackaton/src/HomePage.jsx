@@ -15,34 +15,15 @@ const HomePage = () => {
     "https://www.politecnicointercontinental.com/wp-content/uploads/2024/06/32-diplomados-virtuales-gratis_citologia.jpg.webp",
   ];
 
+  // Llamada real a la base de datos para obtener procedimientos
   useEffect(() => {
-    // Datos mockeados temporalmente
-    const mockUsuario = {
-      id: 1,
-      nombre: "Usuario Prueba",
-      rol: "instrumentador",
-    };
-
-    const mockProcedimientos = [
-      {
-        id: 1,
-        nombre: "Cirugía General",
-        fecha: new Date().toISOString(),
-        descripcion: "Procedimiento quirúrgico general programado",
-      },
-      {
-        id: 2,
-        nombre: "Procedimiento Ortopédico",
-        fecha: new Date().toISOString(),
-        descripcion: "Cirugía ortopédica de emergencia",
-      },
-    ];
-
-    // Simular llamada a API
-    setTimeout(() => {
-      setUsuario(mockUsuario);
-      setProcedimientos(mockProcedimientos);
-    }, 500);
+    fetch("http://localhost/hackaton.github.io/hackaton/src/procedimiento.php")
+      .then((res) => res.json())
+      .then((data) => setProcedimientos(data))
+      .catch((err) => {
+        setProcedimientos([]);
+        console.error("Error al obtener procedimientos:", err);
+      });
   }, []);
 
   useEffect(() => {
@@ -99,11 +80,16 @@ const HomePage = () => {
                     </div>
                   ) : (
                     <div className="list-group">
-                      {procedimientos.map((procedimiento) => (
+                      {procedimientos.map((procedimiento, index) => (
                         <Link
                           to={`/ver-procedimiento/${procedimiento.id}`}
                           key={procedimiento.id}
                           className="list-item"
+                          style={{
+                            animation: "fadeIn 0.5s ease",
+                            animationDelay: `${index * 0.1}s`,
+                            animationFillMode: "both",
+                          }}
                         >
                           <div className="list-content">
                             <h5>{procedimiento.nombre}</h5>
@@ -112,7 +98,10 @@ const HomePage = () => {
                             </small>
                           </div>
                           <p>
-                            {procedimiento.descripcion.substring(0, 100)}...
+                            {procedimiento.descripcion
+                              ? procedimiento.descripcion.substring(0, 100)
+                              : ""}
+                            ...
                           </p>
                         </Link>
                       ))}

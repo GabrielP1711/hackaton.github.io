@@ -142,3 +142,42 @@ class Procedimiento {
         }
     }
 }
+
+require_once 'DataBase.php';
+
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+
+$db = DataBase::getInstance()->getConnection();
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // Listar procedimientos
+    $sql = "SELECT id, nombre, descripcion, fecha FROM procedimiento ORDER BY fecha DESC";
+    $result = $db->query($sql);
+
+    $procedimientos = [];
+    while ($row = $result->fetch_assoc()) {
+        $procedimientos[] = $row;
+    }
+    echo json_encode($procedimientos);
+    $db->close();
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Crear nuevo procedimiento
+    $data = json_decode(file_get_contents('php://input'), true);
+    $nombre = $db->real_escape_string($data['nombre']);
+    $descripcion = $db->real_escape_string($data['descripcion']);
+    $fecha = date('Y-m-d H:i:s');
+
+    $sql = "INSERT INTO procedimiento (nombre, descripcion, fecha) VALUES ('$nombre', '$descripcion', '$fecha')";
+    if ($db->query($sql)) {
+        echo json_encode(['success' => true, 'id' => $db->insert_id]);
+    } else {
+        echo json_encode(['success' => false, 'error' => $db->error]);
+    }
+    $db->close();
+    exit;
+}
+?>
