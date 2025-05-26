@@ -4,24 +4,23 @@ import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import Login from "./Login";
 import BarraNavegacion from "./barraNavegacion";
-<<<<<<< Updated upstream
 import HomePage from "./HomePage";
 import FormularioProcedimiento from './FormularioProcedimiento';
+import FormularioSolicitud from "./FormularioSolicitud";
+import RegistroInstrumentador from "./RegistroInstrumentador";
+
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-=======
-import FormularioSolicitud from "./FormularioSolicitud";
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <FormularioSolicitud></FormularioSolicitud>
->>>>>>> Stashed changes
     <BrowserRouter>
       <BarraNavegacion />
       <Routes>
          <Route path="/" element={<HomePage />} />  
           <Route path="/login" element={<Login />} />
           <Route path="/nuevo-procedimiento" element={<FormularioProcedimiento />} />
+          <Route path="/nueva-solicitud" element={<FormularioSolicitud />} />
+          <Route path="/registro" element={<RegistroInstrumentador />} />
+
         {/*  <Route path="/login" element={<Login />} />*/}
         {/*  <Route path="/formSolicitud" element={<Abogados />} />*/}
         {/* <Route path="/form" element={<Clientes />} />*/}

@@ -16,7 +16,7 @@ function RegistroInstrumentador() {
     formData.append("foto", foto);
 
     // Enviar los datos al servidor (puedes ajustar la URL según tu API)
-    fetch("http://localhost/api/registro-instrumentador", {
+    fetch("http://localhost/hackaton.github.io/hackaton/src/registrar_procedimiento.phphttp://localhost/hackaton.github.io/hackaton/src/registrar.php", {
       method: "POST",
       body: formData,
     })
