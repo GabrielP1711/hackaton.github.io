@@ -3,10 +3,11 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import Login from "./Login";
+import BarraNavegacion from "./barraNavegacion";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Login></Login>
+    <BarraNavegacion></BarraNavegacion>
     <BrowserRouter>
       <Routes>
         {/*  <Route path="/login" element={<Login />} />*/}
