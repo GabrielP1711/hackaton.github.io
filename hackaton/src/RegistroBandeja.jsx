@@ -153,19 +153,6 @@ function RegistroBandeja() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="descripcion">Descripción:</label>
-              <textarea
-                id="descripcion"
-                name="descripcion"
-                value={bandeja.descripcion}
-                onChange={handleBandejaChange}
-                placeholder="Descripción detallada de la bandeja"
-                className="form-control"
-                rows="3"
-              />
-            </div>
-
-            <div className="form-group">
               <label htmlFor="procedimiento_id">Procedimiento:</label>
               <select
                 id="procedimiento_id"
