@@ -6,7 +6,6 @@ function RegistroBandeja() {
   const navigate = useNavigate();
   const [bandeja, setBandeja] = useState({
     nombre: "",
-    descripcion: "",
     procedimiento_id: "",
   });
   const [instrumentos, setInstrumentos] = useState([
@@ -21,7 +20,7 @@ function RegistroBandeja() {
     const cargarProcedimientos = async () => {
       try {
         const response = await fetch(
-          "http://localhost/hackaton.github.io/hackaton/src/backend/obtener_procedimientos.php"
+          "http://localhost/hackaton.github.io/hackaton/src/obtener_procedimientos.php"
         );
         if (!response.ok) {
           throw new Error("Error al cargar los procedimientos");
@@ -30,11 +29,7 @@ function RegistroBandeja() {
         setProcedimientos(data);
       } catch (error) {
         console.error("Error:", error);
-        setProcedimientos([
-          { id: 1, nombre: "Cirugía General" },
-          { id: 2, nombre: "Ortopedia" },
-          { id: 3, nombre: "Cardiología" },
-        ]); // Datos de respaldo en caso de error
+        setProcedimientos([]); // No mostrar procedimientos si hay error
       }
     };
 
@@ -94,7 +89,7 @@ function RegistroBandeja() {
 
     try {
       const response = await fetch(
-        "http://localhost/hackaton.github.io/hackaton/src/backend/registrar_bandeja.php",
+        "http://localhost/hackaton.github.io/hackaton/src/registrar_bandeja.php",
         {
           method: "POST",
           headers: {
