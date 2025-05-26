@@ -6,8 +6,13 @@
   height: 100vh;
   background-color: #f0f0f0;
 }
-h1 {
-  font-size: 2.5em;
-  color: #333;
-  margin-bottom: 1rem;
+.container-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 45%;
+  width: 20%;
+  background-color: #2dd2f3;
+  border-radius: 15%;
 }

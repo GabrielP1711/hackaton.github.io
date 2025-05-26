@@ -1,0 +1,133 @@
+:root {
+    /* Paleta de colores refinada */
+    --primary-color: #4f46e5;      /* Indigo principal */
+    --primary-dark: #3730a3;       /* Indigo oscuro para efectos */
+    --primary-light: #818cf8;      /* Indigo claro para efectos de luz */
+    --secondary-color: #06b6d4;    /* Turquesa para acentos */
+    --text-primary: #1e293b;       /* Azul grisáceo oscuro para texto principal */
+    --text-secondary: #64748b;     /* Gris azulado para texto secundario */
+    --background-light: #f8fafc;   /* Gris muy claro para fondos */
+    --white: #ffffff;
+    --black: #0f172a;
+    
+    /* Variables de diseño */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius-sm: 4px;
+    --radius: 8px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.06);
+    --shadow: 0 4px 10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.1);
+    --shadow-md: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.1);
+    --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
+    --shadow-inset: inset 0 2px 4px rgba(15, 23, 42, 0.06);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+/* Main Content Global Styles */
+main {
+  padding-top: 50px; /* Reduced padding */
+}
+
+body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--background-light);
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-form {
+            width: 100%;
+            max-width: 400px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .login-form h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #d1d5db;
+            border-radius: var(--radius);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius);
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .login-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .register-link {
+            margin-top: 15px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .register-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* Estilos para el pop-up */
+        .popup {
+            display: none;
+            position: relative;
+            background-color: #e53e3e;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 15px;
+            font-weight: 500;
+            font-size: 14px;
+            animation: fadeIn 0.3s ease-out;
+            width: 100%;
+            text-align: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
