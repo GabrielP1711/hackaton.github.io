@@ -7,7 +7,7 @@ function BarraNavegacion() {
     <>
       <header className="header">
         <div className="container">
-          <div className="logo">Gestion quirurgica</div>
+          <div className="logo">Gestion Quirurgica</div>
           <nav className="desktop-nav">
             <ul>
               <li>
