@@ -22,6 +22,8 @@ createRoot(document.getElementById("root")).render(
           <Route path="/nueva-solicitud" element={<FormularioSolicitud />} />
           <Route path="/registro" element={<RegistroInstrumentador />} />
           <Route path="/instrumentos" element={<RegistroBandeja />} />
+          <Route path="/solicitud" element={<FormularioSolicitud />} />
+
 
         {/*  <Route path="/login" element={<Login />} />*/}
         {/*  <Route path="/formSolicitud" element={<Abogados />} />*/}

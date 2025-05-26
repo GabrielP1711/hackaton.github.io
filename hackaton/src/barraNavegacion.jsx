@@ -14,7 +14,7 @@ function BarraNavegacion() {
                 <Link to="/">Inicio</Link>
               </li>
               <li>
-                <Link to="/#">Solicitud</Link>
+                <Link to="/solicitud">Solicitud</Link>
               </li>
               <li>
                 <Link to="/#">Devolución</Link>
