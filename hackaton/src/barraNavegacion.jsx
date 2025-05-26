@@ -10,20 +10,23 @@ function BarraNavegacion() {
           <div className="logo">Gestion quirurgica</div>
           <nav className="desktop-nav">
             <ul>
-              <li>    
+              <li>
                 <Link to="/">Inicio</Link>
               </li>
-              <li>    
+              <li>
                 <Link to="/#">Solicitud</Link>
               </li>
-              <li> 
+              <li>
                 <Link to="/#">Devolución</Link>
               </li>
               <li>
-                 <Link to="/#">Central</Link>
+                <Link to="/#">Central</Link>
               </li>
               <li>
-                 <Link to="/login">Iniciar sesion</Link>
+                <Link to="/login">Iniciar sesion</Link>
+              </li>
+              <li>
+                <Link to="/registro">Registrar</Link>
               </li>
             </ul>
           </nav>
